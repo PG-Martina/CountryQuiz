@@ -1,0 +1,32 @@
+@use "../../styling/custom-variables.scss" as *;
+
+.room-details {
+  flex: 0 0 250px;
+  margin-top: 20px;
+  &__players {
+    list-style: none;
+    padding: 0;
+  }
+
+  &__player {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin: 15px 0;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: rgba($blue-0, 0.8);
+
+    img {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+    }
+  }
+
+  &__player-details {
+    span {
+      display: block;
+    }
+  }
+}

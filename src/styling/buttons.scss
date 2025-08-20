@@ -1,0 +1,43 @@
+@use "./custom-variables.scss" as *;
+
+.back-button {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none !important;
+  span {
+    font-size: 18px;
+  }
+}
+
+.cancel-button {
+  all: unset;
+  margin-left: auto;
+  padding: 10px;
+  font-size: 14px;
+  background-color: $red;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.basic-button {
+  all: unset;
+  font-size: 14px;
+  background-color: $blue-0;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &--big {
+    font-size: 24px;
+  }
+
+  &--inverse {
+    background-color: $yellow-100;
+    color: $blue-0;
+  }
+}

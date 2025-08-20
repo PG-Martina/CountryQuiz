@@ -1,0 +1,16 @@
+@use "../../styling/custom-variables.scss" as *;
+@use "../../styling/typography.scss" as *;
+
+.button {
+  all: unset;
+  cursor: pointer;
+  font-family: $font-family-base;
+  width: 100%;
+  padding: 10px 20px;
+  text-align: center;
+  background-color: $blue-50;
+  color: $yellow-0;
+  font-weight: 600;
+  font-size: 20px;
+  border-radius: 10px;
+}

@@ -1,0 +1,40 @@
+@use "../../styling/custom-variables.scss" as *;
+
+.main {
+  background-image: url("../../assets/flags.png");
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba($blue-100, 0.5);
+    z-index: -1;
+  }
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1000px;
+  padding: 20px;
+  height: 100%;
+  max-height: 80%;
+  background-color: $blue-100;
+  color: $yellow-100;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+}

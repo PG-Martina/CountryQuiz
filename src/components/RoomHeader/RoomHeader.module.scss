@@ -1,0 +1,16 @@
+@use "../../styling/custom-variables.scss" as *;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  padding: 10px 0 20px;
+
+  &__left,
+  &__right {
+    width: 120px;
+    display: flex;
+    align-items: center;
+  }
+}
