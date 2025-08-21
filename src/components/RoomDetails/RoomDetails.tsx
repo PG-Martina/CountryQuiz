@@ -1,5 +1,5 @@
-import type { RoomType } from "../../pages/Room/Room";
-import classes from "./RoomDetails.module.scss";
+import type { RoomType } from '../../types/roomTypes';
+import classes from './RoomDetails.module.scss';
 
 interface RoomDetailsProps {
   room: RoomType;
@@ -7,14 +7,14 @@ interface RoomDetailsProps {
 
 function RoomDetails({ room }: RoomDetailsProps) {
   return (
-    <div className={classes["room-details"]}>
-      <ul className={classes["room-details__players"]}>
+    <div className={classes['room-details']}>
+      <ul className={classes['room-details__players']}>
         {room &&
           room.players.length > 0 &&
           room.players.map((player, index) => (
-            <li key={index} className={classes["room-details__player"]}>
+            <li key={index} className={classes['room-details__player']}>
               <img src={player.avatar.avatar} alt="" />
-              <div className={classes["room-details__player-details"]}>
+              <div className={classes['room-details__player-details']}>
                 <span>{player.nickname}</span>
                 <span>Score: {player.points}</span>
               </div>

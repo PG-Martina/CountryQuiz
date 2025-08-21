@@ -1,7 +1,11 @@
+@use "../../styling/custom-variables.scss" as *;
+
 .game {
   height: 100%;
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid $blue-0;
+  border-radius: 20px;
 }

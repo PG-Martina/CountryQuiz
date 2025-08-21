@@ -1,27 +1,14 @@
-import { useParams } from "react-router-dom";
-import { useDocumentData } from "react-firebase-hooks/firestore";
-import { doc, DocumentReference } from "firebase/firestore";
-import { db } from "../../services/firebase";
 // import { useEffect } from "react";
-import RoomDetails from "../../components/RoomDetails/RoomDetails";
-import RoomHeader from "../../components/RoomHeader/RoomHeader";
-import type { PlayerType } from "../../types/roomTypes";
-import classes from "./Room.module.scss";
-import Game from "../../components/Game/Game";
-
-export interface RoomType {
-  players: PlayerType[];
-  owner: string;
-}
+import RoomDetails from '../../components/RoomDetails/RoomDetails';
+import RoomHeader from '../../components/RoomHeader/RoomHeader';
+import classes from './Room.module.scss';
+import Game from '../../components/Game/Game';
+import { useParams } from 'react-router-dom';
+import { useRoomData } from '../../hooks/useRoomData';
 
 function Room() {
   const { roomID } = useParams();
-
-  const roomRef: DocumentReference<RoomType> | null = roomID
-    ? (doc(db, "rooms", roomID) as DocumentReference<RoomType>)
-    : null;
-
-  const [room, loading, error] = useDocumentData<RoomType>(roomRef);
+  const { room, error, loading } = useRoomData();
 
   // useEffect(() => {
   //   return () => {
@@ -38,7 +25,7 @@ function Room() {
   if (error) {
     return <div>Error: {error.message}</div>;
   }
-  
+
   return (
     <div className={classes.room}>
       {room ? (

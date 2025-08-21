@@ -1,11 +1,18 @@
-import { useState } from "react";
-import Countdown from "../Countdown/Countdown";
+import { useState } from 'react';
+import Countdown from '../Countdown/Countdown';
+import Question from '../Question/Question';
 
 function GamePlay() {
   const [isCounterDone, setIsCounterDone] = useState(false);
 
   return (
-    <>{isCounterDone ? "Play!" : <Countdown setIsDone={setIsCounterDone} />}</>
+    <>
+      {isCounterDone ? (
+        <Question />
+      ) : (
+        <Countdown setIsDone={setIsCounterDone} />
+      )}
+    </>
   );
 }
 

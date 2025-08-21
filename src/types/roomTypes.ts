@@ -3,3 +3,8 @@ export interface PlayerType {
   nickname: string;
   points: number;
 }
+export interface RoomType {
+  players: PlayerType[];
+  owner: string;
+  inProgress: boolean;
+}

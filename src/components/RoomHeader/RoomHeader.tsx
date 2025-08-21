@@ -1,7 +1,7 @@
-import { useNavigate, useParams } from "react-router-dom";
-import classes from "./RoomHeader.module.scss";
-import { useRoom } from "../../hooks/useRoom";
-import { useState } from "react";
+import { useNavigate, useParams } from 'react-router-dom';
+import classes from './RoomHeader.module.scss';
+import { useRoomActions } from '../../hooks/useRoomActions';
+import { useState } from 'react';
 
 interface RoomHeaderProps {
   owner: string;
@@ -10,15 +10,15 @@ interface RoomHeaderProps {
 function RoomHeader({ owner }: RoomHeaderProps) {
   const [isCopied, setIsCopied] = useState(false);
 
-  const playerName = sessionStorage.getItem("playerName") ?? undefined;
+  const playerName = sessionStorage.getItem('playerName') ?? undefined;
 
   const { roomID } = useParams();
-  const { formLeaveRoom } = useRoom();
+  const { formLeaveRoom } = useRoomActions();
   const navigate = useNavigate();
 
   const onLeaveRoomHandler = () => {
     formLeaveRoom(playerName, roomID);
-    navigate("/");
+    navigate('/');
   };
 
   const onInviteFriendsHandler = async () => {
@@ -39,7 +39,7 @@ function RoomHeader({ owner }: RoomHeaderProps) {
           type="button"
           onClick={onInviteFriendsHandler}
         >
-          {isCopied ? "Code copied!" : "Invite friends"}
+          {isCopied ? 'Code copied!' : 'Invite friends'}
         </button>
       </div>
       <h1>{`${owner}'s room`}</h1>

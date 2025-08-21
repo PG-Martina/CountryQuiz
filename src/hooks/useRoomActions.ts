@@ -1,8 +1,8 @@
-import { useNavigate } from "react-router-dom";
-import { createRoom, joinRoom, leaveRoom } from "../services/roomService";
-import { clearSession, setPlayerSession } from "../utils/sessionStorage";
+import { useNavigate } from 'react-router-dom';
+import { createRoom, joinRoom, leaveRoom } from '../services/roomService';
+import { clearSession, setPlayerSession } from '../utils/sessionStorage';
 
-export const useRoom = () => {
+export const useRoomActions = () => {
   const navigate = useNavigate();
 
   const formCreateRoom = async (nickname: string, roomID: string) => {
@@ -28,6 +28,6 @@ export const useRoom = () => {
   return {
     formCreateRoom,
     formJoinRoom,
-    formLeaveRoom,
+    formLeaveRoom
   };
 };
