@@ -42,7 +42,11 @@ function RoomHeader({ owner }: RoomHeaderProps) {
           {isCopied ? 'Code copied!' : 'Invite friends'}
         </button>
       </div>
-      <h1>{`${owner}'s room`}</h1>
+      <h1>
+        {owner.slice(-1).toLowerCase() === 's'
+          ? `${owner}' room`
+          : `${owner}'s room`}
+      </h1>
       <div className={classes.header__right}>
         <button
           className="cancel-button"

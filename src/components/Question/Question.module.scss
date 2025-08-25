@@ -1,2 +1,58 @@
+@use '../../styling/custom-variables.scss' as *;
 .question {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+
+  &__flag {
+    flex: 0;
+    width: 350px;
+    border: 2px solid $blue-0;
+    border-radius: 20px;
+  }
+
+  &__answers {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 50px;
+    gap: 15px;
+    flex: 1;
+    padding: 10px;
+  }
+
+  &__answer {
+    all: unset;
+    box-sizing: border-box;
+    flex: 0 0 calc(50% - 10px);
+    width: calc(50% - 10px);
+    padding: 10px;
+    border: 2px solid $blue-0;
+    color: $yellow-100;
+    border-radius: 20px;
+    text-align: center;
+    cursor: pointer;
+
+    &[disabled] {
+      cursor: default;
+      background-color: $blue-50;
+    }
+
+    transition: background-color 0.3s ease;
+
+    &:not([disabled]):hover {
+      background-color: $blue-50;
+    }
+
+    &.correct {
+      background-color: $green;
+    }
+
+    &.wrong {
+      background-color: $red;
+    }
+  }
 }
