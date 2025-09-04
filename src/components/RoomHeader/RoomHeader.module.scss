@@ -1,4 +1,4 @@
-@use "../../styling/custom-variables.scss" as *;
+@use '../../styling/custom-variables.scss' as *;
 
 .header {
   display: flex;
@@ -7,9 +7,14 @@
   width: 100%;
   padding: 10px 0 20px;
 
+  &__right {
+    justify-content: flex-end;
+    gap: 15px;
+  }
+
   &__left,
   &__right {
-    width: 120px;
+    width: 180px;
     display: flex;
     align-items: center;
   }

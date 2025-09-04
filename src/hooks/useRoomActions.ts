@@ -23,6 +23,7 @@ export const useRoomActions = () => {
   ) => {
     await leaveRoom(nickname, roomID);
     clearSession();
+    navigate('/');
   };
 
   return {

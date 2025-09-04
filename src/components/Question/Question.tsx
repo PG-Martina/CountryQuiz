@@ -4,7 +4,7 @@ import classes from './Question.module.scss';
 
 function Question() {
   const { room } = useRoomData();
-  const currentQuestion = room?.questions[room?.currentQuestion];
+  const currentQuestion = room?.game.questions[room?.game.currentQuestion];
 
   const [isLocked, setIsLocked] = useState(false);
 

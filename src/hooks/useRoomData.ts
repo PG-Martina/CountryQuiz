@@ -6,9 +6,13 @@ import type { RoomType } from '../types/roomTypes';
 
 export const useRoomData = () => {
   const { roomID } = useParams();
-  const roomRef: DocumentReference<RoomType> | null = roomID
-    ? (doc(db, 'rooms', roomID) as DocumentReference<RoomType>)
-    : null;
+
+  const roomRef: DocumentReference<RoomType> = doc(
+    db,
+    'rooms',
+    roomID!
+  ) as DocumentReference<RoomType>;
+
   const [room, loading, error] = useDocumentData<RoomType>(roomRef);
 
   return {

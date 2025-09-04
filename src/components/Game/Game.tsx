@@ -1,39 +1,35 @@
 import classes from './Game.module.scss';
 import GamePlay from '../GamePlay/GamePlay';
 import { useRoomData } from '../../hooks/useRoomData';
-import { startGame } from '../../services/gameService';
-import { useParams } from 'react-router-dom';
 import { useState } from 'react';
-import { useCountriesData } from '../../hooks/useCountriesData';
+import { useGameData } from '../../hooks/useGameData';
 
 function Game() {
   const [questionNumber, setQuestionNumber] = useState(10);
+  const [inProgress, setIsProgress] = useState(false);
 
   const isOwner = sessionStorage.getItem('isRoomOwner');
-  const { roomID } = useParams();
   const { room } = useRoomData();
-  const { createQuestions } = useCountriesData();
+  const { gameStart } = useGameData();
 
-  const onGameStartHandle = () => {
-    if (roomID) {
-      const questions = createQuestions(questionNumber);
-      if (!questions) return;
-
-      startGame(roomID, questions);
-    }
+  const handleGameStart = () => {
+    setIsProgress(true);
+    setTimeout(() => {
+      gameStart(questionNumber);
+    }, 3000); //animation time
   };
 
   return (
     <div className={classes.game}>
-      {room?.inProgress && <GamePlay />}
-      {!room?.inProgress && (
+      {inProgress && <GamePlay />}
+      {!inProgress && (
         <>
           {isOwner ? (
             <>
               <button
                 type="button"
                 className="basic-button basic-button--big basic-button--inverse"
-                onClick={onGameStartHandle}
+                onClick={handleGameStart}
               >
                 Start the game!
               </button>

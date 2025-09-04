@@ -1,27 +1,24 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import classes from './RoomHeader.module.scss';
 import { useRoomActions } from '../../hooks/useRoomActions';
 import { useState } from 'react';
+import Timer from '../Timer/Timer';
+import { useRoomData } from '../../hooks/useRoomData';
 
 interface RoomHeaderProps {
   owner: string;
 }
 
 function RoomHeader({ owner }: RoomHeaderProps) {
+  const { roomID } = useParams();
+  const { formLeaveRoom } = useRoomActions();
+
   const [isCopied, setIsCopied] = useState(false);
+  const { room } = useRoomData();
 
   const playerName = sessionStorage.getItem('playerName') ?? undefined;
 
-  const { roomID } = useParams();
-  const { formLeaveRoom } = useRoomActions();
-  const navigate = useNavigate();
-
-  const onLeaveRoomHandler = () => {
-    formLeaveRoom(playerName, roomID);
-    navigate('/');
-  };
-
-  const onInviteFriendsHandler = async () => {
+  const onCopyCodeHandler = async () => {
     if (roomID) {
       await navigator.clipboard.writeText(roomID);
       setIsCopied(true);
@@ -37,7 +34,7 @@ function RoomHeader({ owner }: RoomHeaderProps) {
         <button
           className="basic-button"
           type="button"
-          onClick={onInviteFriendsHandler}
+          onClick={onCopyCodeHandler}
         >
           {isCopied ? 'Code copied!' : 'Invite friends'}
         </button>
@@ -48,10 +45,11 @@ function RoomHeader({ owner }: RoomHeaderProps) {
           : `${owner}'s room`}
       </h1>
       <div className={classes.header__right}>
+        {room && room.game && room.game.startTime && <Timer game={room.game} />}
         <button
           className="cancel-button"
           type="button"
-          onClick={onLeaveRoomHandler}
+          onClick={() => formLeaveRoom(playerName, roomID)}
         >
           Leave room
         </button>
