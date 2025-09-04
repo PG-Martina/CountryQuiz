@@ -27,9 +27,9 @@ function Question() {
         alt={currentQuestion?.flag.alt}
       />
       <div className={classes.question__answers}>
-        {currentQuestion?.answers!.map((answer, index) => (
+        {currentQuestion?.answers!.map((answer) => (
           <button
-            key={index}
+            key={answer.name}
             className={classes.question__answer}
             data-name={answer.name.toLowerCase()}
             type="button"

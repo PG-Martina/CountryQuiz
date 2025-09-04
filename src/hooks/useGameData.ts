@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { startGame } from '../services/gameService';
 import { useCountriesData } from './useCountriesData';
+import type { RoomType } from '../types/roomTypes';
 
 export const useGameData = () => {
   const { roomID } = useParams();
@@ -12,7 +13,14 @@ export const useGameData = () => {
     startGame(roomID!, questions);
   };
 
+  const getCurrentQuestion = (room: RoomType) => {
+    const questions = room.game.questions;
+    const currentIndex = room.game.currentQuestion;
+    return questions[currentIndex];
+  };
+
   return {
-    gameStart
+    gameStart,
+    getCurrentQuestion
   };
 };
